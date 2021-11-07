@@ -24,5 +24,18 @@ namespace Upload
 
             
         }
+
+        protected void btnEnviarMarq_Click(object sender, EventArgs e)
+        {
+            string caminho = Server.MapPath(@"upload\");
+            string nome = "";
+            
+            for(int i = 0; i < fuArquivo.PostedFiles.Count; i++)
+            {
+                nome = nome + fuArquivo.PostedFiles[i].FileName + " - ";
+                fuArquivo.PostedFiles[i].SaveAs(caminho + fuArquivo.PostedFiles[i].FileName);
+            }
+            txtNome.Text = nome;
+        }
     }
 }
